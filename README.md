@@ -1,2 +1,2 @@
 # CSharpBot-Window
- Discord Bot made with DSharpPlus in C# .Net 5.0
+ To make this Project working you need to add our [CSharpBot-API]() to your Assemblys.
