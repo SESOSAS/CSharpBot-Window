@@ -1,4 +1,5 @@
 ﻿using CSharpBot_API;
+using DSharpPlus.Entities;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -36,12 +37,6 @@ namespace CSharpBot_Window
             rpctextbox.Text = MSettings.Default.RPCText;
         }
 
-        private void MainForm_Closing(object sender, System.ComponentModel.CancelEventArgs e)
-        {
-            DBot.DCClientStop();
-            Close();
-        }
-
         private void timer1_Tick(object sender, EventArgs e)
         {
             MSettings.Default.IsSaved = savecheckbox.Checked;
@@ -57,26 +52,77 @@ namespace CSharpBot_Window
             MSettings.Default.RPCMode = rpccombobox.SelectedIndex;
             MSettings.Default.RPCText = rpctextbox.Text;
             MSettings.Default.Save();
+
+            if (DBot.IsOnline)
+            {
+                statuslabel.Text = String.Format("Status: {0}", "Online");
+            }
+            else
+            {
+                statuslabel.Text = String.Format("Status: {0}", "Offline");
+            }
         }
 
         private void startbutton_Click(object sender, EventArgs e)
         {
-            DBot.DCClientStart();
+            if (DBot.IsOnline)
+                return;
+            DBot.ClientStart();
         }
 
         private void stopbutton_Click(object sender, EventArgs e)
         {
-            DBot.DCClientStop();
+            if (!DBot.IsOnline)
+                return;
+            DBot.ClientStop();
         }
 
         private void sendbutton_Click(object sender, EventArgs e)
         {
-            DBot.SendMessage(channelidtextbox.Text, channelidrichtextbox.Text);
+            if (!DBot.IsOnline)
+                return;
+            MSettings.Default.ChannelID = channelidtextbox.Text;
+            DBot.ClientSendMessage(MSettings.Default.ChannelID, channelidrichtextbox.Text);
         }
 
         private void updaterpcbutton_Click(object sender, EventArgs e)
         {
-            DBot.ChangeRPC(rpccombobox.SelectedIndex, rpctextbox.Text, rpcurltextbox.Text);
+            if (!DBot.IsOnline)
+                return;
+            DBot.ClientChangeRPC(rpccombobox.SelectedIndex, rpctextbox.Text, rpcurltextbox.Text);
+        }
+
+        private void MainForm_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            MSettings.Default.Save();
+            DBot.ClientStop();
+            Close();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            channellist.Items.Clear();
+
+            foreach (DiscordGuild guild in DBot.ArrayGuilds)
+            {
+                foreach(var channel in guild.Channels)
+                {
+                    channellist.Items.Add(channel.Value.Id.ToString());
+                }
+            }
+        }
+
+        private void channellist_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (!DBot.IsOnline)
+                return;
+            if (channellist.SelectedItems.Count >= 1)
+            {
+                DBot.ChannelName(channellist.SelectedItems[0].Text);
+                selectedchannel.Text = "Name: " + DBot.FetchedChannelName;
+                MSettings.Default.ChannelID = channellist.SelectedItems[0].Text;
+                channelidtextbox.Text = MSettings.Default.ChannelID;
+            }
         }
     }
 }
