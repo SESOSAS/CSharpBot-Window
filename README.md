@@ -1,2 +1,2 @@
 # CSharpBot-Window
- To make this Project working you need to add our [CSharpBot-API]() to your Assemblys.
+ To get this Project to work you need to add our [CSharpBot-API]() to your Assemblys.
