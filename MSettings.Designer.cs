@@ -70,5 +70,29 @@ namespace CSharpBot_Window {
                 this["RPCMode"] = value;
             }
         }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("")]
+        public string VerificationRole {
+            get {
+                return ((string)(this["VerificationRole"]));
+            }
+            set {
+                this["VerificationRole"] = value;
+            }
+        }
+        
+        [global::System.Configuration.UserScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.DefaultSettingValueAttribute("!")]
+        public string Prefix {
+            get {
+                return ((string)(this["Prefix"]));
+            }
+            set {
+                this["Prefix"] = value;
+            }
+        }
     }
 }

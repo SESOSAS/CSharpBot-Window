@@ -36,6 +36,7 @@
             this.stopbutton = new System.Windows.Forms.Button();
             this.startbutton = new System.Windows.Forms.Button();
             this.sendmessage = new System.Windows.Forms.TabPage();
+            this.selectedchannel = new System.Windows.Forms.Label();
             this.fetchbutton = new System.Windows.Forms.Button();
             this.channellist = new System.Windows.Forms.ListView();
             this.sendbutton = new System.Windows.Forms.Button();
@@ -48,7 +49,10 @@
             this.rpctextbox = new System.Windows.Forms.TextBox();
             this.rpccombobox = new System.Windows.Forms.ComboBox();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
-            this.selectedchannel = new System.Windows.Forms.Label();
+            this.verificationroletextbox = new System.Windows.Forms.TextBox();
+            this.updatevirificationrole = new System.Windows.Forms.Button();
+            this.prefixbutton = new System.Windows.Forms.Button();
+            this.prefixtextbox = new System.Windows.Forms.TextBox();
             this.tabControl1.SuspendLayout();
             this.settings.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -80,6 +84,10 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.prefixtextbox);
+            this.groupBox1.Controls.Add(this.prefixbutton);
+            this.groupBox1.Controls.Add(this.updatevirificationrole);
+            this.groupBox1.Controls.Add(this.verificationroletextbox);
             this.groupBox1.Controls.Add(this.statuslabel);
             this.groupBox1.Controls.Add(this.stopbutton);
             this.groupBox1.Controls.Add(this.startbutton);
@@ -100,7 +108,7 @@
             // 
             // stopbutton
             // 
-            this.stopbutton.Location = new System.Drawing.Point(6, 101);
+            this.stopbutton.Location = new System.Drawing.Point(6, 68);
             this.stopbutton.Name = "stopbutton";
             this.stopbutton.Size = new System.Drawing.Size(379, 23);
             this.stopbutton.TabIndex = 0;
@@ -110,7 +118,7 @@
             // 
             // startbutton
             // 
-            this.startbutton.Location = new System.Drawing.Point(6, 72);
+            this.startbutton.Location = new System.Drawing.Point(6, 39);
             this.startbutton.Name = "startbutton";
             this.startbutton.Size = new System.Drawing.Size(379, 23);
             this.startbutton.TabIndex = 0;
@@ -134,6 +142,15 @@
             this.sendmessage.TabIndex = 1;
             this.sendmessage.Text = "Message";
             this.sendmessage.UseVisualStyleBackColor = true;
+            // 
+            // selectedchannel
+            // 
+            this.selectedchannel.AutoSize = true;
+            this.selectedchannel.Location = new System.Drawing.Point(6, 11);
+            this.selectedchannel.Name = "selectedchannel";
+            this.selectedchannel.Size = new System.Drawing.Size(45, 15);
+            this.selectedchannel.TabIndex = 6;
+            this.selectedchannel.Text = "Name: ";
             // 
             // fetchbutton
             // 
@@ -249,14 +266,41 @@
             // 
             this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
-            // selectedchannel
+            // verificationroletextbox
             // 
-            this.selectedchannel.AutoSize = true;
-            this.selectedchannel.Location = new System.Drawing.Point(6, 11);
-            this.selectedchannel.Name = "selectedchannel";
-            this.selectedchannel.Size = new System.Drawing.Size(45, 15);
-            this.selectedchannel.TabIndex = 6;
-            this.selectedchannel.Text = "Name: ";
+            this.verificationroletextbox.Location = new System.Drawing.Point(6, 97);
+            this.verificationroletextbox.Name = "verificationroletextbox";
+            this.verificationroletextbox.PlaceholderText = "Verification Role ID";
+            this.verificationroletextbox.Size = new System.Drawing.Size(296, 23);
+            this.verificationroletextbox.TabIndex = 1;
+            // 
+            // updatevirificationrole
+            // 
+            this.updatevirificationrole.Location = new System.Drawing.Point(308, 97);
+            this.updatevirificationrole.Name = "updatevirificationrole";
+            this.updatevirificationrole.Size = new System.Drawing.Size(77, 23);
+            this.updatevirificationrole.TabIndex = 2;
+            this.updatevirificationrole.Text = "Update";
+            this.updatevirificationrole.UseVisualStyleBackColor = true;
+            this.updatevirificationrole.Click += new System.EventHandler(this.updatevirificationrole_Click);
+            // 
+            // prefixbutton
+            // 
+            this.prefixbutton.Location = new System.Drawing.Point(308, 126);
+            this.prefixbutton.Name = "prefixbutton";
+            this.prefixbutton.Size = new System.Drawing.Size(77, 23);
+            this.prefixbutton.TabIndex = 3;
+            this.prefixbutton.Text = "Update";
+            this.prefixbutton.UseVisualStyleBackColor = true;
+            this.prefixbutton.Click += new System.EventHandler(this.prefixbutton_Click);
+            // 
+            // prefixtextbox
+            // 
+            this.prefixtextbox.Location = new System.Drawing.Point(6, 127);
+            this.prefixtextbox.Name = "prefixtextbox";
+            this.prefixtextbox.PlaceholderText = "Prefix";
+            this.prefixtextbox.Size = new System.Drawing.Size(296, 23);
+            this.prefixtextbox.TabIndex = 4;
             // 
             // MainForm
             // 
@@ -303,5 +347,9 @@
         private System.Windows.Forms.Button fetchbutton;
         private System.Windows.Forms.Label statuslabel;
         private System.Windows.Forms.Label selectedchannel;
+        private System.Windows.Forms.Button updatevirificationrole;
+        private System.Windows.Forms.TextBox verificationroletextbox;
+        private System.Windows.Forms.TextBox prefixtextbox;
+        private System.Windows.Forms.Button prefixbutton;
     }
 }

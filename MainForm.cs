@@ -35,6 +35,8 @@ namespace CSharpBot_Window
             }
             rpccombobox.SelectedIndex = MSettings.Default.RPCMode;
             rpctextbox.Text = MSettings.Default.RPCText;
+            verificationroletextbox.Text = MSettings.Default.VerificationRole;
+            prefixtextbox.Text = MSettings.Default.Prefix;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
@@ -61,6 +63,8 @@ namespace CSharpBot_Window
             {
                 statuslabel.Text = String.Format("Status: {0}", "Offline");
             }
+            MSettings.Default.Prefix = prefixtextbox.Text;
+            MSettings.Default.VerificationRole = verificationroletextbox.Text;
         }
 
         private void startbutton_Click(object sender, EventArgs e)
@@ -123,6 +127,18 @@ namespace CSharpBot_Window
                 MSettings.Default.ChannelID = channellist.SelectedItems[0].Text;
                 channelidtextbox.Text = MSettings.Default.ChannelID;
             }
+        }
+
+        private void updatevirificationrole_Click(object sender, EventArgs e)
+        {
+            DBot.VerificationRoleID = verificationroletextbox.Text;
+            MSettings.Default.VerificationRole = DBot.VerificationRoleID;
+        }
+
+        private void prefixbutton_Click(object sender, EventArgs e)
+        {
+            DBot.prefix = prefixtextbox.Text;
+            MSettings.Default.Prefix = DBot.prefix;
         }
     }
 }

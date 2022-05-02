@@ -1,5 +1,5 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CSharpBotWindow" GeneratedClassName="MSettings">
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="CSharpBot_Window" GeneratedClassName="MSettings">
   <Profiles />
   <Settings>
     <Setting Name="ChannelID" Type="System.String" Scope="User">
@@ -13,6 +13,12 @@
     </Setting>
     <Setting Name="RPCMode" Type="System.Int32" Scope="User">
       <Value Profile="(Default)">0</Value>
+    </Setting>
+    <Setting Name="VerificationRole" Type="System.String" Scope="User">
+      <Value Profile="(Default)" />
+    </Setting>
+    <Setting Name="Prefix" Type="System.String" Scope="User">
+      <Value Profile="(Default)">!</Value>
     </Setting>
   </Settings>
 </SettingsFile>
